@@ -1068,11 +1068,13 @@ public class GT_Mod implements IGT_Mod, IGT_RecipeAdder {
 	            File tDirectory = getSaveDirectory();
 	            if (tDirectory != null) {
 			        NBTTagCompound tNBT = CompressedStreamTools.readCompressed(new FileInputStream(new File(tDirectory, "GT_IDSU_Energyvalues.dat")));
-			        NBTTagList tList = tNBT.getTagList("Energy");
-				    for (int i = 0; i < tList.tagCount(); i++) {
-			            NBTTagCompound tTag = (NBTTagCompound)tList.tagAt(i);
-			            GregTech_API.sIDSUList.put(tTag.getInteger("Hash"), tTag.getInteger("EU"));
-			        }
+			        
+			        //FIX IDSU
+			        //NBTTagList tList = tNBT.getTagList("Energy");
+				    //for (int i = 0; i < tList.tagCount(); i++) {
+			            //NBTTagCompound tTag = (NBTTagCompound)tList.tagAt(i);
+			            //GregTech_API.sIDSUList.put(tTag.getInteger("Hash"), tTag.getInteger("EU"));
+			       // }
 	        	}
 			} catch (Throwable e) {
                	if (!(e instanceof java.io.FileNotFoundException))

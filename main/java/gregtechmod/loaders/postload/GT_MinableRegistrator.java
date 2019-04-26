@@ -12,7 +12,7 @@ public class GT_MinableRegistrator implements Runnable {
 	public void run() {
         GT_Log.out.println("GT_Mod: Adding JackHammer minable Blocks.");
     	ItemStack tStack;
-    	GregTech_API.sRecipeAdder.addJackHammerMinableBlock(Blocks.glowStone, false);
+    	GregTech_API.sRecipeAdder.addJackHammerMinableBlock(Blocks.glowstone, false);
     	tStack = GT_ModHandler.getIC2Item("constructionFoam", 1);
     	if (tStack != null) GregTech_API.sRecipeAdder.addJackHammerMinableBlock(Blocks.blocksList[((ItemBlock)tStack.getItem()).getBlockID()], false);
     	tStack = GT_ModHandler.getIC2Item("constructionFoamWall", 1);
@@ -25,7 +25,7 @@ public class GT_MinableRegistrator implements Runnable {
     	if (tStack != null) GregTech_API.sRecipeAdder.addJackHammerMinableBlock(Blocks.blocksList[((ItemBlock)tStack.getItem()).getBlockID()], true);
     	
         GT_Log.out.println("GT_Mod: Adding Blocks to the Miners Valuable List.");
-    	GT_ModHandler.addValuableOre(Blocks.glowStone.blockID, 0, 1);
-    	GT_ModHandler.addValuableOre(Blocks.slowSand.blockID, 0, 1);
+    	GT_ModHandler.addValuableOre(Blocks.glowstone.blockID, 0, 1);
+    	GT_ModHandler.addValuableOre(Blocks.soul_sand.blockID, 0, 1);
 	}
 }

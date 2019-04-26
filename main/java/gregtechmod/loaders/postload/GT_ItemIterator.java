@@ -11,8 +11,11 @@ import gregtechmod.api.util.GT_OreDictUnificator;
 import gregtechmod.common.items.GT_MetaItem_Cell;
 import gregtechmod.common.items.GT_MetaItem_Material;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
 public class GT_ItemIterator implements Runnable {
@@ -32,30 +35,30 @@ public class GT_ItemIterator implements Runnable {
 			GT_ModHandler.addPulverisationRecipe(tStack, GT_OreDictUnificator.get("dustBronze" , 8), null, 0, false);
 			GT_ModHandler.addSmeltingRecipe(tStack, GT_OreDictUnificator.get("ingotBronze", 8));
 		}
-		if (null != (tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {tStack2 = GT_OreDictUnificator.get("ingotIron", 1), tStack3 = new ItemStack(Block.glass, 1, 0), tStack2, tStack3, GT_OreDictUnificator.get("ingotGold", 1), tStack3, tStack2, tStack3, tStack2}))) {
+		if (null != (tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {tStack2 = GT_OreDictUnificator.get("ingotIron", 1), tStack3 = new ItemStack(Blocks.glass, 1, 0), tStack2, tStack3, GT_OreDictUnificator.get("ingotGold", 1), tStack3, tStack2, tStack3, tStack2}))) {
 			GT_ModHandler.addPulverisationRecipe(tStack, GT_OreDictUnificator.get("dustIron", 4), GT_OreDictUnificator.get("dustGold", 1), 0, false);
 		}
-		if (null != (tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {tStack2 = GT_OreDictUnificator.get("ingotSteel", 1), tStack3 = new ItemStack(Block.glass, 1, 0), tStack2, tStack3, GT_OreDictUnificator.get("ingotGold", 1), tStack3, tStack2, tStack3, tStack2}))) {
+		if (null != (tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {tStack2 = GT_OreDictUnificator.get("ingotSteel", 1), tStack3 = new ItemStack(Blocks.glass, 1, 0), tStack2, tStack3, GT_OreDictUnificator.get("ingotGold", 1), tStack3, tStack2, tStack3, tStack2}))) {
 			GT_ModHandler.addPulverisationRecipe(tStack, GT_OreDictUnificator.get("dustSteel", 4), GT_OreDictUnificator.get("dustGold", 1), 0, false);
 		}
 		
 		GT_Log.out.println("GT_Mod: Registering various Tools to be usable on GregTech Machines");
-		GregTech_API.registerScrewdriver(GT_ModHandler.getRecipeOutput(new ItemStack[] {null, new ItemStack(Items.ingotIron, 1), null, new ItemStack(Items.stick, 1)}));
-		GregTech_API.registerScrewdriver(GT_ModHandler.getRecipeOutput(new ItemStack[] {new ItemStack(Items.ingotIron, 1), null, null, null, new ItemStack(Items.stick, 1)}));
+		GregTech_API.registerScrewdriver(GT_ModHandler.getRecipeOutput(new ItemStack[] {null, new ItemStack(Items.iron_ingot, 1), null, new ItemStack(Items.stick, 1)}));
+		GregTech_API.registerScrewdriver(GT_ModHandler.getRecipeOutput(new ItemStack[] {new ItemStack(Items.iron_ingot, 1), null, null, null, new ItemStack(Items.stick, 1)}));
 		
         GT_Log.out.println("GT_Mod: Adding Food Recipes to the Automatic Canning Machine. (also during the following Item Iteration)");
-        GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.rottenFlesh, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 2), GT_ModHandler.getIC2Item("filledTinCan", 2, 1), null, 200, 1);
-        GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.spiderEye, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 1), GT_ModHandler.getIC2Item("filledTinCan", 1, 1), null, 100, 1);
-        GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.poisonousPotato, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 1), GT_ModHandler.getIC2Item("filledTinCan", 1, 1), null, 100, 1);
+        GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.rotten_flesh, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 2), GT_ModHandler.getIC2Item("filledTinCan", 2, 1), null, 200, 1);
+        GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.spider_eye, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 1), GT_ModHandler.getIC2Item("filledTinCan", 1, 1), null, 100, 1);
+        GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.poisonous_potato, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 1), GT_ModHandler.getIC2Item("filledTinCan", 1, 1), null, 100, 1);
         GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.cake, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 6), GT_ModHandler.getIC2Item("filledTinCan", 6, 0), null, 600, 1);
-        GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Block.cake, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 6), GT_ModHandler.getIC2Item("filledTinCan", 6, 0), null, 600, 1);
-		GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.bowlSoup, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 3), GT_ModHandler.getIC2Item("filledTinCan", 3, 0), new ItemStack(Items.bowlEmpty, 1), 300, 1);
+        GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.cake, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 6), GT_ModHandler.getIC2Item("filledTinCan", 6, 0), null, 600, 1);
+		GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(Items.mushroom_stew, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", 3), GT_ModHandler.getIC2Item("filledTinCan", 3, 0), new ItemStack(Items.bowl, 1), 300, 1);
 		
 		GT_Log.out.println("GT_Mod: Scanning ItemList.");
-		for (int i = 0; i < Items.itemsList.length; i++) if ((tItem = Items.itemsList[i]) != null && (tName = tItems.getUnlocalizedName()) != null) {
+		for (int i = 0; i < Items.itemsList.length; i++) if ((tItem = Items.itemsList[i]) != null && (tName = tItem.getUnlocalizedName()) != null) {
 			try {
 				if (tItem instanceof mods.railcraft.api.core.items.IToolCrowbar) {
-					if (!tItems.isDamageable() && !GT_ModHandler.isElectricItem(new ItemStack(tItem, 1, 0))) {
+					if (!tItem.isDamageable() && !GT_ModHandler.isElectricItem(new ItemStack(tItem, 1, 0))) {
 						if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "infiniteDurabilityRCCrowbars", false)) {
 							if (GT_ModHandler.removeRecipe(new ItemStack(tItem, 1, GregTech_API.ITEM_WILDCARD_DAMAGE)))
 					        	GT_Log.out.println("GT_Mod: Removed infinite RC Crowbar: " + tName);
@@ -68,7 +71,7 @@ public class GT_ItemIterator implements Runnable {
 			} catch (Throwable e) {}
 			try {
 				if (tItem instanceof powercrystals.minefactoryreloaded.api.IToolHammer) {
-					if (!tItems.isDamageable() && !GT_ModHandler.isElectricItem(new ItemStack(tItem, 1, 0))) {
+					if (!tItem.isDamageable() && !GT_ModHandler.isElectricItem(new ItemStack(tItem, 1, 0))) {
 						if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "infiniteDurabilityMFRHammers", false)) {
 							if (GT_ModHandler.removeRecipe(new ItemStack(tItem, 1, GregTech_API.ITEM_WILDCARD_DAMAGE)))
 					        	GT_Log.out.println("GT_Mod: Removed infinite MFR Hammer: " + tName);
@@ -81,7 +84,7 @@ public class GT_ItemIterator implements Runnable {
 			} catch (Throwable e) {}
 			try {
 				if (tItem instanceof buildcraft.api.tools.IToolWrench) {
-					if (!tItems.isDamageable() && !GT_ModHandler.isElectricItem(new ItemStack(tItem, 1, 0))) {
+					if (!tItem.isDamageable() && !GT_ModHandler.isElectricItem(new ItemStack(tItem, 1, 0))) {
 						if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "infiniteDurabilityBCWrenches", false)) {
 							if (GT_ModHandler.removeRecipe(new ItemStack(tItem, 1, GregTech_API.ITEM_WILDCARD_DAMAGE)))
 					        	GT_Log.out.println("GT_Mod: Removed infinite BC Wrench: " + tName);
@@ -97,12 +100,12 @@ public class GT_ItemIterator implements Runnable {
 				try {
 					Block tBlock = Block.blocksList[((ItemBlock)tItem).getBlockID()];
 					if (tBlock != null) {
-						if (GT_Mod.sBlockStackSize < tItems.getItemStackLimit()) {
+						if (GT_Mod.sBlockStackSize < tItem.getItemStackLimit()) {
 							try {
-								if (tBlock.isGenMineableReplaceable(GregTech_API.sDummyWorld, 0, 0, 0, Block.stone.blockID)
-								||  tBlock.isGenMineableReplaceable(GregTech_API.sDummyWorld, 0, 0, 0, Block.netherrack.blockID)
-								||  tBlock.isGenMineableReplaceable(GregTech_API.sDummyWorld, 0, 0, 0, Block.whiteStone.blockID)) {
-									tItems.setMaxStackSize(GT_Mod.sBlockStackSize);
+								if (tBlock.isGenMineableReplaceable(GregTech_API.sDummyWorld, 0, 0, 0, Blocks.stone.blockID)
+								||  tBlock.isGenMineableReplaceable(GregTech_API.sDummyWorld, 0, 0, 0, Blocks.netherrack.blockID)
+								||  tBlock.isGenMineableReplaceable(GregTech_API.sDummyWorld, 0, 0, 0, Blocks.end_stone.blockID)) {
+									tItem.setMaxStackSize(GT_Mod.sBlockStackSize);
 								}
 							} catch(Throwable e) {
 								e.printStackTrace(GT_Log.err);
@@ -111,7 +114,7 @@ public class GT_ItemIterator implements Runnable {
 					}
 				} catch (IndexOutOfBoundsException e) {
 					System.err.println("ERROR! A Mod attempted to return an invalid Block ID using ItemBlock! Please mention this to the respective Mod Author, who owns the following Items.");
-					System.err.println("ITEM: " + tItem + " - " + tItems.getItemDisplayName(new ItemStack(tItem)));
+					System.err.println("ITEM: " + tItem + " - " + tItem.getItemStackDisplayName(new ItemStack(tItem)));
 					System.err.println("ATTEMPTED BLOCK ID: " + ((ItemBlock)tItem).getBlockID());
 					System.err.println("");
 					e.printStackTrace();
@@ -121,9 +124,9 @@ public class GT_ItemIterator implements Runnable {
 			}
 			
 			if (tItem instanceof ItemFood && tItem != GT_ModHandler.getIC2Item("filledTinCan", 1, 0).getItem()) {
-		        int tFoodValue = (int)Math.ceil(((ItemFood)tItem).getHealAmount() / 2.0D);
+		        int tFoodValue = (int)Math.ceil(((Object)tItem).getHealAmount() / 2.0D);
 		        if (tFoodValue > 0) {
-		        	GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(tItem, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", tFoodValue), GT_ModHandler.getIC2Item("filledTinCan", tFoodValue, 0), tItems.hasContainerItem()?new ItemStack(tItems.getContainerItem(), 1, 0):null, tFoodValue*100, 1);
+		        	GregTech_API.sRecipeAdder.addCannerRecipe(new ItemStack(tItem, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), GT_ModHandler.getIC2Item("tinCan", tFoodValue), GT_ModHandler.getIC2Item("filledTinCan", tFoodValue, 0), tItem.hasContainerItem()?new ItemStack(tItem.getContainerItem(), 1, 0):null, tFoodValue*100, 1);
 		        }
 		    }
 		    if (tName.equals("tile.ArsMagica:ore_vinteum")) {

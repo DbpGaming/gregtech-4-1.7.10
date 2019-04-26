@@ -73,12 +73,12 @@ public class GT_LiquidAndFuelLoader implements Runnable {
 		GT_FluidRegistry.addFluid("NitroCoalFuel"		, "Nitro Coal Fuel"		, Materials.NitroCoalFuel	, 1, GT_MetaItem_Cell.instance.getUnunifiedStack(35, 1), GT_ModHandler.getEmptyCell(1));
 		
         GT_Log.out.println("GT_Mod: Initializing various Fuels.");
-        new GT_Recipe(new ItemStack(Items.bucketLava), new ItemStack(Blocks.obsidian), GT_OreDictUnificator.get("ingotCopper", 1), GT_OreDictUnificator.get("ingotTin", 1), GT_OreDictUnificator.get("ingotElectrum", 1), 30, 2);
+        new GT_Recipe(new ItemStack(Items.lava_bucket), new ItemStack(Blocks.obsidian), GT_OreDictUnificator.get("ingotCopper", 1), GT_OreDictUnificator.get("ingotTin", 1), GT_OreDictUnificator.get("ingotElectrum", 1), 30, 2);
         
         GregTech_API.sRecipeAdder.addFuel(GT_ModHandler.getIC2Item("reactorHeatpack", 1)	, GT_ModHandler.getEmptyCell(1),  30, 2);
 		
-        GregTech_API.sRecipeAdder.addFuel(new ItemStack(Items.expBottle, 1)					, null,     10, 5);
-        GregTech_API.sRecipeAdder.addFuel(new ItemStack(Items.ghastTear, 1)					, null,    500, 5);
+        GregTech_API.sRecipeAdder.addFuel(new ItemStack(Items.experience_bottle, 1)					, null,     10, 5);
+        GregTech_API.sRecipeAdder.addFuel(new ItemStack(Items.ghast_tear, 1)					, null,    500, 5);
         GregTech_API.sRecipeAdder.addFuel(new ItemStack(Blocks.beacon, 1)					, null, Materials.NetherStar.mFuelPower * 2, Materials.NetherStar.mFuelType);
 		
 		GT_ModHandler.addBoilerFuel(GT_Utility.getFluidForFilledItem(GT_MetaItem_Cell.instance.getUnunifiedStack(35, 1)), 18000);
