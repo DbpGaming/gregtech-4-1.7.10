@@ -8,6 +8,7 @@ import gregtechmod.common.items.GT_MetaItem_Component;
 import gregtechmod.common.items.GT_MetaItem_Dust;
 import gregtechmod.common.items.GT_MetaItem_Material;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -16,25 +17,25 @@ public class GT_ScrapboxDropLoader implements Runnable {
 	public void run() {
         GT_Log.out.println("GT_Mod: (re-)adding Scrapbox Drops.");
         
-        GT_ModHandler.addScrapboxDrop(9.50F, new ItemStack(Items.hoeWood));
-        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.axeWood));
-        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.swordWood));
-        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.shovelWood));
-        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.pickaxeWood));
+        GT_ModHandler.addScrapboxDrop(9.50F, new ItemStack(Items.wooden_hoe));
+        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.wooden_axe));
+        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.wooden_sword));
+        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.wooden_shovel));
+        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.wooden_pickaxe));
         GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Items.sign));
         GT_ModHandler.addScrapboxDrop(9.50F, new ItemStack(Items.stick));
-        GT_ModHandler.addScrapboxDrop(5.00F, new ItemStack(Block.dirt));
-        GT_ModHandler.addScrapboxDrop(3.00F, new ItemStack(Block.grass));
-        GT_ModHandler.addScrapboxDrop(3.00F, new ItemStack(Block.gravel));
-        GT_ModHandler.addScrapboxDrop(0.50F, new ItemStack(Block.pumpkin));
-        GT_ModHandler.addScrapboxDrop(1.00F, new ItemStack(Block.slowSand));
-        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Block.netherrack));
+        GT_ModHandler.addScrapboxDrop(5.00F, new ItemStack(Blocks.dirt));
+        GT_ModHandler.addScrapboxDrop(3.00F, new ItemStack(Blocks.grass));
+        GT_ModHandler.addScrapboxDrop(3.00F, new ItemStack(Blocks.gravel));
+        GT_ModHandler.addScrapboxDrop(0.50F, new ItemStack(Blocks.pumpkin));
+        GT_ModHandler.addScrapboxDrop(1.00F, new ItemStack(Blocks.soul_sand));
+        GT_ModHandler.addScrapboxDrop(2.00F, new ItemStack(Blocks.netherrack));
         GT_ModHandler.addScrapboxDrop(1.00F, new ItemStack(Items.bone));
-        GT_ModHandler.addScrapboxDrop(9.00F, new ItemStack(Items.rottenFlesh));
-        GT_ModHandler.addScrapboxDrop(0.40F, new ItemStack(Items.porkCooked));
-        GT_ModHandler.addScrapboxDrop(0.40F, new ItemStack(Items.beefCooked));
-        GT_ModHandler.addScrapboxDrop(0.40F, new ItemStack(Items.chickenCooked));
-        GT_ModHandler.addScrapboxDrop(0.50F, new ItemStack(Items.appleRed));
+        GT_ModHandler.addScrapboxDrop(9.00F, new ItemStack(Items.rotten_flesh));
+        GT_ModHandler.addScrapboxDrop(0.40F, new ItemStack(Items.cooked_porkchop));
+        GT_ModHandler.addScrapboxDrop(0.40F, new ItemStack(Items.cooked_beef));
+        GT_ModHandler.addScrapboxDrop(0.40F, new ItemStack(Items.cooked_chicken));
+        GT_ModHandler.addScrapboxDrop(0.50F, new ItemStack(Items.apple));
         GT_ModHandler.addScrapboxDrop(0.50F, new ItemStack(Items.bread));
         GT_ModHandler.addScrapboxDrop(0.10F, new ItemStack(Items.cake));
         GT_ModHandler.addScrapboxDrop(1.00F, GT_ModHandler.getIC2Item("filledTinCan", 1, 0));
@@ -47,7 +48,7 @@ public class GT_ScrapboxDropLoader implements Runnable {
         GT_ModHandler.addScrapboxDrop(1.00F, new ItemStack(Items.feather));
         GT_ModHandler.addScrapboxDrop(0.70F, GT_ModHandler.getIC2Item("plantBall", 1));
         GT_ModHandler.addScrapboxDrop(3.80F, GT_OreDictUnificator.get("dustWood", 1));
-        GT_ModHandler.addScrapboxDrop(0.60F, new ItemStack(Items.slimeBall));
+        GT_ModHandler.addScrapboxDrop(0.60F, new ItemStack(Items.slime_ball));
         GT_ModHandler.addScrapboxDrop(0.80F, GT_OreDictUnificator.get("itemRubber", 1));
         GT_ModHandler.addScrapboxDrop(2.70F, GT_ModHandler.getIC2Item("suBattery", 1));
 		GT_ModHandler.addScrapboxDrop(0.80F, GT_MetaItem_Component.instance.getStack(22,1));
@@ -58,7 +59,7 @@ public class GT_ScrapboxDropLoader implements Runnable {
 		GT_ModHandler.addScrapboxDrop(2.00F, GT_ModHandler.getIC2Item("insulatedCopperCableItem", 1));
 		GT_ModHandler.addScrapboxDrop(0.40F, GT_ModHandler.getIC2Item("doubleInsulatedGoldCableItem", 1));
         GT_ModHandler.addScrapboxDrop(0.90F, new ItemStack(Items.redstone));
-        GT_ModHandler.addScrapboxDrop(0.80F, new ItemStack(Items.glowstone));
+        GT_ModHandler.addScrapboxDrop(0.80F, new ItemStack(Items.glowstone_dust));
         GT_ModHandler.addScrapboxDrop(0.80F, GT_OreDictUnificator.get("dustCoal"		, 1));
 		GT_ModHandler.addScrapboxDrop(2.50F, GT_OreDictUnificator.get("dustCharcoal"	, 1));
         GT_ModHandler.addScrapboxDrop(1.00F, GT_OreDictUnificator.get("dustIron"		, 1));

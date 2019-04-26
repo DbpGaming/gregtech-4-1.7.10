@@ -270,7 +270,7 @@ public class GT_CraftingRecipeLoader implements Runnable {
         GT_ModHandler.addCraftingRecipe(GT_ModHandler.getIC2Item("reactorUraniumDual", 1)	, new Object[] {"CPC"				, 'C', GT_ModHandler.getIC2Item("reactorUraniumSimple", 1), 'P', OrePrefixes.plate.get(Materials.Lead)});
         GT_ModHandler.addCraftingRecipe(GT_ModHandler.getIC2Item("reactorUraniumQuad", 1)	, new Object[] {" C ", "PPP", " C "	, 'C', GT_ModHandler.getIC2Item("reactorUraniumDual", 1)  , 'P', OrePrefixes.plate.get(Materials.Lead)});
         */
-        GT_ModHandler.addCraftingRecipe(GT_ModHandler.getIC2Item("reactorVent", 1), new Object[] {"AIA", "I I", "AIA", 'I', GT_ModHandler.getIC2Item("ironFence", 1), 'A', OrePrefixes.plate.get(Materials.Aluminium)});
+        GT_ModHandler.addCraftingRecipe(GT_ModHandler.getIC2Item("reactorVent", 1), new Object[] {"AIA", "I I", "AIA", 'I', new ItemStack(Blocks.iron_bars, 1), 'A', OrePrefixes.plate.get(Materials.Aluminium)});
         GT_ModHandler.addShapelessCraftingRecipe(GT_ModHandler.getIC2Item("reactorPlatingExplosive", 1), new Object[] {GT_ModHandler.getIC2Item("reactorPlating", 1), OrePrefixes.plate.get(Materials.Lead)});
         
         if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.gregtechrecipes, "wirelessRedstone", true)) {

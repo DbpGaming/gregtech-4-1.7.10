@@ -7,7 +7,7 @@ import gregtechmod.api.util.GT_OreDictUnificator;
 import gregtechmod.api.util.GT_Utility;
 import gregtechmod.common.GT_DummyWorld;
 import gregtechmod.common.items.GT_MetaItem_Cell;
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.ForgeHooks;
@@ -64,12 +64,12 @@ public class GT_SeedFlowerIterator implements Runnable {
 			GT_Log.out.println("GT_Mod: Forestry was properly loaded, so the Seed Recipes got added to the Squeezer.");
 		} else {
 			GT_Log.out.println("GT_Mod: Forestry was NOT loaded, so the Recipes got added to the Industrial Centrifuge.");
-			GregTech_API.sRecipeAdder.addCentrifugeRecipe(new ItemStack(Items.melonSeeds, 64, 0), 1, GT_MetaItem_Cell.instance.getStack(24, 1), null, null, null, 200);
-			GregTech_API.sRecipeAdder.addCentrifugeRecipe(new ItemStack(Items.pumpkinSeeds, 64, 0), 1, GT_MetaItem_Cell.instance.getStack(24, 1), null, null, null, 200);
-			GregTech_API.sRecipeAdder.addCentrifugeRecipe(new ItemStack(Items.seeds, 64, 0), 1, GT_MetaItem_Cell.instance.getStack(24, 1), null, null, null, 200);
+			GregTech_API.sRecipeAdder.addCentrifugeRecipe(new ItemStack(Items.melon_seeds, 64, 0), 1, GT_MetaItem_Cell.instance.getStack(24, 1), null, null, null, 200);
+			GregTech_API.sRecipeAdder.addCentrifugeRecipe(new ItemStack(Items.pumpkin_seeds, 64, 0), 1, GT_MetaItem_Cell.instance.getStack(24, 1), null, null, null, 200);
+			GregTech_API.sRecipeAdder.addCentrifugeRecipe(new ItemStack(Items.wheat_seeds, 64, 0), 1, GT_MetaItem_Cell.instance.getStack(24, 1), null, null, null, 200);
 	    }
 		
-        GT_ModHandler.addExtractionRecipe(new ItemStack(Block.plantRed, 1, 0), new ItemStack(Items.dyePowder, 3, 1));
-        GT_ModHandler.addExtractionRecipe(new ItemStack(Block.plantYellow, 1, 0), new ItemStack(Items.dyePowder, 3, 11));
+        GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.red_flower, 1, 0), new ItemStack(Items.dye, 3, 1));
+        GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.yellow_flower, 1, 0), new ItemStack(Items.dye, 3, 11));
 	}
 }
