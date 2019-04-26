@@ -20,6 +20,7 @@ import java.util.Map.Entry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -432,7 +433,7 @@ public class GT_ModHandler {
 		aOutput = GT_OreDictUnificator.get(true, aOutput);
 		if (aOutput == null || aChance <= 0) return false;
 		aOutput.stackSize = 1;
-		if (GregTech_API.sConfiguration.system && !GT_Utility.areStacksEqual(aOutput, new ItemStack(Item.hoeWood, 1, 0))) return false;
+		if (GregTech_API.sConfiguration.system && !GT_Utility.areStacksEqual(aOutput, new ItemStack(Items.wooden_hoe, 1, 0))) return false;
 		if (!GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.scrapboxdrops, aOutput, true)) return false;
 		try {
 			GT_Utility.callMethod(GT_Utility.getFieldContent("ic2.api.recipe.Recipes", "scrapboxDrops", true, true), "addDrop", true, false, true, GT_Utility.copy(aOutput), aChance);

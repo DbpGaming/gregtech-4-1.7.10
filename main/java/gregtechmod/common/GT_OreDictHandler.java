@@ -21,8 +21,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.Blocks.Block;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -50,7 +52,7 @@ public class GT_OreDictHandler {
 	
 	private boolean mActivated = false;
 	
-	@net.minecraftforge.event.ForgeSubscribe
+	@SubscribeEvent
     public void registerOre(net.minecraftforge.oredict.OreDictionary.OreRegisterEvent aEvent) {
 		if (GT_Mod.mDoNotInit || aEvent == null || aEvent.Ore == null || aEvent.Ore.getItem() == null || aEvent.Name == null || aEvent.Name.equals("") || mIgnoredNames.contains(aEvent.Name)) return;
 		
@@ -419,7 +421,7 @@ public class GT_OreDictHandler {
 	    			GT_ModHandler.addPulverisationRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.dustImpure, aMaterial, 1), GT_OreDictUnificator.get(OrePrefixes.dust, aMaterial, 1), 10, false);
 	            	break;
 	    		case Flint:
-	    			GT_ModHandler.addPulverisationRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.dustImpure, aMaterial, 2), new ItemStack(Item.flint, 1), 50, false);
+	    			GT_ModHandler.addPulverisationRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.dustImpure, aMaterial, 2), new ItemStack(Items.flint, 1), 50, false);
 	            	break;
 	    		case GraniteBlack:
 	    			for (ItemStack tIteratedStack : GT_OreDictUnificator.getOres("plateAlloyAdvanced")) GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, tIteratedStack), GT_Utility.copy(8, aStack), GT_ModHandler.getIC2Item("reinforcedStone", 8), 400, 4);
@@ -564,7 +566,7 @@ public class GT_OreDictHandler {
 	    		    GT_ModHandler.addCompressionRecipe(GT_Utility.copy(8, aStack), GT_MetaItem_Material.instance.getStack(15, 1));
 	    			break;
 	    		case Wheat:
-		    		GT_ModHandler.addSmeltingRecipe(GT_Utility.copy(1, aStack), new ItemStack(Item.bread, 1, 0));
+		    		GT_ModHandler.addSmeltingRecipe(GT_Utility.copy(1, aStack), new ItemStack(Items.bread, 1, 0));
 		    		break;
 	    		case Mercury:
 		    		System.err.println("Quicksilver Dust?, To melt that, you don't even need a Furnace...");
@@ -669,7 +671,7 @@ public class GT_OreDictHandler {
 	    		}
 	    		
 	        	if ((GT_ModHandler.mBCStoneGear != null && null != (tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {null, GT_Utility.copy(1, aStack), null, GT_Utility.copy(1, aStack), GT_ModHandler.mBCStoneGear, GT_Utility.copy(1, aStack), null, GT_Utility.copy(1, aStack), null})))
-	        		|| null != (tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {null, GT_Utility.copy(1, aStack), null, GT_Utility.copy(1, aStack), new ItemStack(Item.ingotIron, 1), GT_Utility.copy(1, aStack), null, GT_Utility.copy(1, aStack), null}))
+	        		|| null != (tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {null, GT_Utility.copy(1, aStack), null, GT_Utility.copy(1, aStack), new ItemStack(Items.iron_ingot, 1), GT_Utility.copy(1, aStack), null, GT_Utility.copy(1, aStack), null}))
 	        		|| null != (tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {null, GT_Utility.copy(1, aStack), null, GT_Utility.copy(1, aStack), new ItemStack(Blocks.cobblestone, 1), GT_Utility.copy(1, aStack), null, GT_Utility.copy(1, aStack), null}))) {
 	        		
 	        		GregTech_API.sRecipeAdder.addCNCRecipe(GT_Utility.copy(4, aStack), tStack, 800, 1);
@@ -745,7 +747,7 @@ public class GT_OreDictHandler {
 		    		GT_ModHandler.addPulverisationRecipe(GT_Utility.copy(1, aStack), GT_ModHandler.getIC2Item("fertilizer", 2), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Phosphorus, 1), 50, false);
 		    	}
 		    	else if (aMaterial == Materials.Coal || aMaterial == Materials.Charcoal) {
-		    		if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "torchesFromCoal", false)) GT_ModHandler.removeRecipe(new ItemStack[] {GT_Utility.copy(1, aStack), null, null, new ItemStack(Item.stick, 1, 0), null, null, null, null, null});
+		    		if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "torchesFromCoal", false)) GT_ModHandler.removeRecipe(new ItemStack[] {GT_Utility.copy(1, aStack), null, null, new ItemStack(Items.stick, 1, 0), null, null, null, null, null});
 		        }
 	    		break;
 	    	case nugget:
@@ -803,7 +805,7 @@ public class GT_OreDictHandler {
 	    	case stick:
 	    		GregTech_API.sRecipeAdder.addCutterRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.bolt, aMaterial, 4), Math.max(aMaterial.getMass() * 2, 1), 4);
 			    if (!GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "torchesFromCoal", false)) {
-		    		GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), new ItemStack(Item.coal, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), new ItemStack(Blocks.torchWood, 4), 400, 1);
+		    		GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), new ItemStack(Items.coal, 1, GregTech_API.ITEM_WILDCARD_DAMAGE), new ItemStack(Blocks.torch, 4), 400, 1);
 		    	}
 	    		break;
 		    case oreNether:
@@ -838,7 +840,7 @@ public class GT_OreDictHandler {
 	    			GT_ModHandler.addPulverisationRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Wood, 1), null, 0, false);
 	    		    GregTech_API.sRecipeAdder.addLatheRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Wood, 2), null, 10, 8);
 	    		    GregTech_API.sRecipeAdder.addCNCRecipe(GT_Utility.copy(2, aStack), GT_ModHandler.mBCWoodGear, 800, 1);
-	    		    GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(8, aStack), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1), new ItemStack(Blocks.music, 1), 800, 1);
+	    		    GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(8, aStack), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1), new ItemStack(Blocks.noteblock, 1), 800, 1);
 	    	    	GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.gem, Materials.Diamond, 1), GT_Utility.copy(8, aStack), new ItemStack(Blocks.jukebox, 1), 1600, 1);
 	    	    	//TODO: GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_ModHandler.getIC2Item("industrialDiamond", 1), GT_Utility.copy(8, aStack), new ItemStack(Blocks.jukebox, 1), 1600, 1);
 	    	    }
@@ -850,11 +852,11 @@ public class GT_OreDictHandler {
 	        		GT_ModHandler.addSawmillRecipe(GT_Utility.copy(1, aStack), GT_ModHandler.getIC2Item("resin", 1), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Wood, 16));
 	        		GT_ModHandler.addExtractionRecipe(GT_Utility.copy(1, aStack), GT_ModHandler.getIC2Item("rubber", 1));
 	    	    }
-		        if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "wood2charcoalsmelting", false) && GT_Utility.areStacksEqual(GT_ModHandler.getSmeltingOutput(GT_Utility.copy(1, aStack), false, null), new ItemStack(Item.coal, 1, 1))) GT_ModHandler.removeFurnaceSmelting(GT_Utility.copy(1, aStack), null);
+		        if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "wood2charcoalsmelting", false) && GT_Utility.areStacksEqual(GT_ModHandler.getSmeltingOutput(GT_Utility.copy(1, aStack), false, null), new ItemStack(Items.coal, 1, 1))) GT_ModHandler.removeFurnaceSmelting(GT_Utility.copy(1, aStack), null);
 		        if (aItem instanceof ItemBlock && GT_Mod.sWoodStackSize < aItem.getItemStackLimit()) aItem.setMaxStackSize(GT_Mod.sWoodStackSize);
 		        if (aMeta == GregTech_API.ITEM_WILDCARD_DAMAGE) {
 			    	for (int i = 0; i < 16; i++) {
-				        if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "wood2charcoalsmelting", false) && GT_Utility.areStacksEqual(GT_ModHandler.getSmeltingOutput(new ItemStack(aItem, 1, i), false, null), new ItemStack(Item.coal, 1, 1))) GT_ModHandler.removeFurnaceSmelting(new ItemStack(aItem, 1, i), null);
+				        if (GregTech_API.sConfiguration.addAdvConfig(GT_ConfigCategories.disabledrecipes, "wood2charcoalsmelting", false) && GT_Utility.areStacksEqual(GT_ModHandler.getSmeltingOutput(new ItemStack(aItem, 1, i), false, null), new ItemStack(Items.coal, 1, 1))) GT_ModHandler.removeFurnaceSmelting(new ItemStack(aItem, 1, i), null);
 				    	tStack = GT_ModHandler.getRecipeOutput(new ItemStack[] {new ItemStack(aItem, 1, i)});
 				    	if (tStack != null) {
 				    		ItemStack tPlanks = GT_Utility.copy(tStack);
@@ -883,7 +885,7 @@ public class GT_OreDictHandler {
 			    if (aEvent.Name.startsWith("slabWood")) {
 			    	if (aItem instanceof ItemBlock && GT_Mod.sPlankStackSize < aItem.getItemStackLimit()) aItem.setMaxStackSize(GT_Mod.sPlankStackSize);
 				    GT_ModHandler.addPulverisationRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Wood, 2), null, 0, false);
-				    GregTech_API.sRecipeAdder.addCannerRecipe(GT_ModHandler.getRCItem("fluid.creosote.bucket", 1), GT_Utility.copy(3, aStack), GT_ModHandler.getRCItem("part.tie.wood", 1), new ItemStack(Item.bucketEmpty, 1), 200, 4);
+				    GregTech_API.sRecipeAdder.addCannerRecipe(GT_ModHandler.getRCItem("fluid.creosote.bucket", 1), GT_Utility.copy(3, aStack), GT_ModHandler.getRCItem("part.tie.wood", 1), new ItemStack(Item.bucket, 1), 200, 4);
 				    GregTech_API.sRecipeAdder.addCannerRecipe(GT_ModHandler.getRCItem("fluid.creosote.cell", 1), GT_Utility.copy(3, aStack), GT_ModHandler.getRCItem("part.tie.wood", 1), GT_ModHandler.getEmptyCell(1), 200, 4);
 				}
 	    		break;
@@ -915,8 +917,8 @@ public class GT_OreDictHandler {
 		    		GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iron, 1), GT_MetaItem_Component.instance.getStack(30, 1), 800, 16);
 		    		GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Aluminium, 1), GT_MetaItem_Component.instance.getStack(87, 1), 800, 16);
 		    	} else if (aEvent.Name.equals("craftingRawMachineTier01")) {
-			    	GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), new ItemStack(Blocks.music, 4, GregTech_API.ITEM_WILDCARD_DAMAGE), new ItemStack(GregTech_API.sBlockList[1], 1, 66), 800, 1);
-		    		GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), new ItemStack(Blocks.stoneButton, 16, GregTech_API.ITEM_WILDCARD_DAMAGE), new ItemStack(GregTech_API.sBlockList[1], 1, 67), 800, 1);
+			    	GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), new ItemStack(Blocks.noteblock, 4, GregTech_API.ITEM_WILDCARD_DAMAGE), new ItemStack(GregTech_API.sBlockList[1], 1, 66), 800, 1);
+		    		GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), new ItemStack(Blocks.stone_button, 16, GregTech_API.ITEM_WILDCARD_DAMAGE), new ItemStack(GregTech_API.sBlockList[1], 1, 67), 800, 1);
 		    		GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), GT_MetaItem_Component.instance.getStack(22, 1), new ItemStack(GregTech_API.sBlockList[1], 1, 79), 1600, 2);
 		    		GregTech_API.sRecipeAdder.addAssemblerRecipe(GT_Utility.copy(1, aStack), GT_MetaItem_Component.instance.getStack( 7, 1), GT_ModHandler.getIC2Item("solarPanel", 1), 1600, 2);
 		    	} else if (aEvent.Name.equals("craftingGearTier02")) {

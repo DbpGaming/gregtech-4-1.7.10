@@ -5,14 +5,8 @@ import gregtechmod.api.GregTech_API;
 import gregtechmod.api.enums.GT_ConfigCategories;
 import gregtechmod.api.util.GT_Log;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.NetLoginHandler;
-import net.minecraft.network.packet.NetHandler;
-import net.minecraft.network.packet.Packet1Login;
 import net.minecraft.server.MinecraftServer;
-import cpw.mods.fml.common.network.IConnectionHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.Player;
 
 public class GT_ConnectionHandler implements IConnectionHandler {
 	

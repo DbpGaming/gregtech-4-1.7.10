@@ -7,13 +7,14 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import gregtech.api.interfaces.tileentity.IPipeRenderedTileEntity;
 
 public class GT_Block_Renderer implements ISimpleBlockRenderingHandler {
 	
@@ -84,9 +85,9 @@ public class GT_Block_Renderer implements ISimpleBlockRenderingHandler {
     public boolean renderWorldBlock(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock, int aModelID, RenderBlocks aRenderer) {
 		int aMeta = aWorld.getBlockMetadata(aX, aY, aZ);
 		switch(aMeta) {
-		case  1: return renderPipeBlock(aWorld, aX, aY, aZ, aBlock, aModelID, aRenderer);
-		case  2: return renderPipeBlock(aWorld, aX, aY, aZ, aBlock, aModelID, aRenderer);
-		case  3: return renderPipeBlock(aWorld, aX, aY, aZ, aBlock, aModelID, aRenderer);
+		case  1: return renderPipeBlock(aWorld, aX, aY, aZ, aBlock, null, aRenderer);
+		case  2: return renderPipeBlock(aWorld, aX, aY, aZ, aBlock, null, aRenderer);
+		case  3: return renderPipeBlock(aWorld, aX, aY, aZ, aBlock, null, aRenderer);
 		default: return aRenderer.renderStandardBlock(aBlock, aX, aY, aZ);
 		}
     }
@@ -97,8 +98,7 @@ public class GT_Block_Renderer implements ISimpleBlockRenderingHandler {
      * Most of this has been "stolen" from IC2, all credit to Player for doing the original Render Code.
      * I have changed quite a bit of this Code, just to make it compatible with my Stuff.
      */
-    public boolean renderPipeBlock(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock, int aModelID, RenderBlocks aRenderer) {
-    	TileEntity aTileEntity = aWorld.getBlockTileEntity(aX, aY, aZ);
+    public static boolean renderPipeBlock(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock, IPipeRenderedTileEntity aTileEntity, RenderBlocks aRenderer) {
 		if (aTileEntity instanceof BaseMetaPipeEntity) {
 			aRenderer.flipTexture = false;
 			
@@ -115,14 +115,14 @@ public class GT_Block_Renderer implements ISimpleBlockRenderingHandler {
 			byte tConnections = 0;
 			for (byte i = 0; i < 6; i++) if ((tTileEntity.mConnections & (1 << i)) != 0) tConnections |= (1 << ((i + 2) % 6));
 			
-			Icon tIcons[] = new Icon[6], tCovers[] = new Icon[6];
+			IIcon tIcons[] = new IIcon[6], tCovers[] = new IIcon[6];
 			boolean tIsCovered[] = new boolean[6];
 			for (byte i = 0; i < 6; i++) tIsCovered[i] = (tTileEntity.getCoverIDAtSide(i) != 0);
 			
 			if (tIsCovered[0] && tIsCovered[1] && tIsCovered[2] && tIsCovered[3] && tIsCovered[4] && tIsCovered[5]) return aRenderer.renderStandardBlock(aBlock, aX, aY, aZ);
 			
 			for (byte i = 0; i < 6; i++) {
-				tCovers[i] = aBlock.getBlockTexture(aWorld, aX, aY, aZ, i);
+				tCovers[i] = aTileEntity.getTexture(aBlock, i);
 				tIcons[i] = tTileEntity.getUncoveredIcon(i, (byte)1);
 				if (tIcons[i] == null) {
 					int tIndex = tTileEntity.getUncoveredIndex(i, (byte)1);
@@ -361,29 +361,29 @@ public class GT_Block_Renderer implements ISimpleBlockRenderingHandler {
 		return true;
     }
     
-    public static void renderPositiveXFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, Icon aIcon) {
+    public static void renderPositiveXFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, IIcon aIcon) {
     	aRenderer.flipTexture = true;
         aRenderer.renderFaceXPos(aBlock, aX, aY, aZ, aIcon);
 		aRenderer.flipTexture = false;
     }
     
-    public static void renderPositiveYFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, Icon aIcon) {
+    public static void renderPositiveYFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, IIcon aIcon) {
     	aRenderer.renderFaceYPos(aBlock, aX, aY, aZ, aIcon);
     }
     
-    public static void renderPositiveZFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, Icon aIcon) {
+    public static void renderPositiveZFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, IIcon aIcon) {
     	aRenderer.renderFaceZPos(aBlock, aX, aY, aZ, aIcon);
     }
     
-    public static void renderNegativeXFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, Icon aIcon) {
+    public static void renderNegativeXFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, IIcon aIcon) {
     	aRenderer.renderFaceXNeg(aBlock, aX, aY, aZ, aIcon);
     }
     
-    public static void renderNegativeYFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, Icon aIcon) {
+    public static void renderNegativeYFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, IIcon aIcon) {
     	aRenderer.renderFaceYNeg(aBlock, aX, aY, aZ, aIcon);
     }
     
-    public static void renderNegativeZFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, Icon aIcon) {
+    public static void renderNegativeZFacing(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, IIcon aIcon) {
     	aRenderer.flipTexture = true;
         aRenderer.renderFaceZNeg(aBlock, aX, aY, aZ, aIcon);
 		aRenderer.flipTexture = false;
@@ -396,4 +396,10 @@ public class GT_Block_Renderer implements ISimpleBlockRenderingHandler {
     public int getRenderId() {
         return mRenderID;
     }
+
+	@Override
+	public boolean shouldRender3DInInventory(int modelId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

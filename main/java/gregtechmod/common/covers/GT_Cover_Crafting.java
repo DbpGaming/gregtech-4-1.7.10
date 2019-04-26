@@ -6,7 +6,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.Packet100OpenWindow;
 
 public class GT_Cover_Crafting extends GT_CoverBehavior {
 	

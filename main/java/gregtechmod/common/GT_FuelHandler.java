@@ -18,7 +18,7 @@ public class GT_FuelHandler implements IFuelHandler {
 	public int getBurnTime(ItemStack aFuel) {
 		if (aFuel == null) return 0;
 		if (GT_Utility.areStacksEqual(aFuel, new ItemStack(Items.sign, 1)))				return   600;
-		if (GT_Utility.areStacksEqual(aFuel, new ItemStack(Items.doorWood, 1)))			return  1800;
+		if (GT_Utility.areStacksEqual(aFuel, new ItemStack(Items.wooden_door, 1)))			return  1800;
 		if (GT_OreDictUnificator.isItemStackInstanceOf(aFuel, "dustWood"))				return   100;
 		if (GT_OreDictUnificator.isItemStackInstanceOf(aFuel, "dustSmallWood"))			return    25;
 		if (GT_OreDictUnificator.isItemStackInstanceOf(aFuel, "dustTinyWood"))			return    11;

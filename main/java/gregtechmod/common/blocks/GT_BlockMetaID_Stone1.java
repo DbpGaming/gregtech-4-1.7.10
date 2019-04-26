@@ -27,7 +27,7 @@ public class GT_BlockMetaID_Stone1 extends Block {
         super(Material.rock);
         setResistance(60.0F);
         setUnlocalizedName("BlockMetaID_Stone1");
-        setStepSound(Block.soundStoneFootstep);
+        setStepSound(Block.soundTypeStone);
 		setCreativeTab(GregTech_API.TAB_GREGTECH);
         for (int i = 0; i < 16; i++) MinecraftForge.setBlockHarvestLevel(this, i, "pickaxe",  3);
 	}

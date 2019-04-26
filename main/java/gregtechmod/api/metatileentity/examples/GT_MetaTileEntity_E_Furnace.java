@@ -2,14 +2,20 @@ package gregtechmod.api.metatileentity.examples;
 
 import gregtechmod.api.GregTech_API;
 import gregtechmod.api.interfaces.IGregTechTileEntity;
+import gregtechmod.api.metatileentity.Icon;
 import gregtechmod.api.metatileentity.MetaTileEntity;
 import gregtechmod.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
 import gregtechmod.api.util.GT_ModHandler;
 import gregtechmod.api.util.GT_OreDictUnificator;
 import gregtechmod.api.util.GT_Utility;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTankInfo;
 
 /**
  * This is a copy of my Electric Furnace, with a few Comments from me.
@@ -123,5 +129,83 @@ public class GT_MetaTileEntity_E_Furnace extends GT_MetaTileEntity_BasicMachine 
 	public String getDescription() {
 		// The Description of the Machine, as seen in the Tooltip
 		return "Test Description";
+	}
+
+	@Override
+	public Icon getTextureIcon(byte aSide, byte aFacing, boolean aActive, boolean aRedstone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void registerIcons(IIconRegister aBlockIconRegister) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getInventoryName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void markDirty() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void openInventory() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeInventory() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean canFill(ForgeDirection from, Fluid fluid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canDrain(ForgeDirection from, Fluid fluid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

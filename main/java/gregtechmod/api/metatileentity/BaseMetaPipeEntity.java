@@ -20,6 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.Icon;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
@@ -481,7 +482,7 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
     @Override public int getSteamCapacity() {return 0;}
     @Override public int getTextureIndex(byte aSide, byte aMeta) {return getUncoveredIndex(aSide, aMeta);}
     @Override public Icon getTextureIcon(byte aSide, byte aMeta) {Icon rIcon = getCoverTexture(aSide); if (rIcon != null) return rIcon; return getUncoveredIcon(aSide, aMeta);}
-    public Icon getUncoveredIcon(byte aSide, byte aMeta) {if ((mConnections & -64) != 0) return null; byte tConnections = mConnections; if (tConnections ==  1 || tConnections ==  2) tConnections = 3; else if (tConnections ==  4 || tConnections ==  8) tConnections = 12; else if (tConnections == 16 || tConnections == 32) tConnections = 48; if (hasValidMetaTileEntity()) return mMetaTileEntity.getTextureIcon(aSide, tConnections, tConnections == 0 || (tConnections & (1<<aSide)) != 0, getOutputRedstoneSignal(aSide)>0); return null;}
+    public IIcon getUncoveredIcon(byte aSide, byte aMeta) {if ((mConnections & -64) != 0) return null; byte tConnections = mConnections; if (tConnections ==  1 || tConnections ==  2) tConnections = 3; else if (tConnections ==  4 || tConnections ==  8) tConnections = 12; else if (tConnections == 16 || tConnections == 32) tConnections = 48; if (hasValidMetaTileEntity()) return mMetaTileEntity.getTextureIcon(aSide, tConnections, tConnections == 0 || (tConnections & (1<<aSide)) != 0, getOutputRedstoneSignal(aSide)>0); return null;}
     public int getUncoveredIndex(byte aSide, byte aMeta) {if ((mConnections & 64) != 0) return 368; if ((mConnections & -128) != 0) return 369; byte tConnections = mConnections; if (tConnections ==  1 || tConnections ==  2) tConnections = 3; else if (tConnections ==  4 || tConnections ==  8) tConnections = 12; else if (tConnections == 16 || tConnections == 32) tConnections = 48; if (hasValidMetaTileEntity()) return mMetaTileEntity.getTextureIndex(aSide, tConnections, tConnections == 0 || (tConnections & (1<<aSide)) != 0, getOutputRedstoneSignal(aSide)>0); return -2;}
     
     protected boolean hasValidMetaTileEntity() {return mMetaTileEntity != null && mMetaTileEntity.getBaseMetaTileEntity() == this;}

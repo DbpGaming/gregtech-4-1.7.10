@@ -13,9 +13,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class GT_Renderer extends RenderPlayer {
 	
@@ -24,15 +25,15 @@ public class GT_Renderer extends RenderPlayer {
 		setRenderManager(RenderManager.instance);
 	}
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void receiveRenderEvent(RenderPlayerEvent.Pre aEvent) {
 		if (GT_Utility.getFullInvisibility(aEvent.entityPlayer)) {aEvent.setCanceled(true); return;}
 	}
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void receiveRenderSpecialsEvent(RenderPlayerEvent.Specials.Pre aEvent) {
 		AbstractClientPlayer aPlayer = (AbstractClientPlayer)aEvent.entityPlayer;
-		float aPartialTicks = aEvent.partialTicks;
+		float aPartialTicks = aEvent.partialRenderTick;
 		
 		if (GT_Utility.getFullInvisibility(aPlayer)) {aEvent.setCanceled(true); return;}
 		
